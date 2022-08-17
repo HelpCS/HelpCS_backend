@@ -17,10 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private JwtAuthenticationFilter jwtAuthenticationFilter;
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/h2-console/**");
-	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// http 시큐리티 빌더
@@ -30,11 +27,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						.disable()
 				.httpBasic()// token을 사용하므로 basic 인증 disable
 						.disable()
+				.csrf()// csrf는 현재 사용하지 않으므로 disable
+				.disable()
+				.headers().frameOptions().disable() //h2-console 화면을 사용하기 위해
+				.and()
 				.sessionManagement()  // session 기반이 아님을 선언
 						.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.authorizeRequests() // /와 /auth/** 경로는 인증 안해도 됨.
-						.antMatchers("/", "/auth/**","/h2-console/**").permitAll()
+						.antMatchers("/", "/auth/**","/h2-console/**","/posts/save").permitAll()
 				.anyRequest() // /와 /auth/**이외의 모든 경로는 인증 해야됨.
 						.authenticated();
 

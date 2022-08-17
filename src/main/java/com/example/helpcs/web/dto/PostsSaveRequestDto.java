@@ -1,37 +1,41 @@
 package com.example.helpcs.web.dto;
 
 import com.example.helpcs.domain.posts.Posts;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class PostsSaveRequestDto {
+    private String id;
     private String questionTitle;
     private String question;
     private String questionUrl;
     private String answer;
-
     private String userId;
 
 
-    @Builder
-    public PostsSaveRequestDto(String questionTitle, String question, String questionUrl, String answer,String userId){
-        this.questionTitle = questionTitle;
-        this.question = question;
-        this.questionUrl = questionUrl;
-        this.answer = answer;
-        this.userId = userId;
+
+
+    public PostsSaveRequestDto(final Posts entity){
+        this.id = entity.getId();
+        this.userId = entity.getUserId();
+        this.questionTitle = entity.getQuestionTitle();
+        this.question = entity.getQuestion();
+        this.questionUrl = entity.getQuestionUrl();
+        this.answer = entity.getAnswer();
     }
 
-    public Posts toEntity(){
+    public static Posts toEntity(final PostsSaveRequestDto dto){
         return  Posts.builder()
-                .questionTitle(questionTitle)
-                .question(question)
-                .questionUrl(questionUrl)
-                .answer(answer)
-                .userId(userId)
+                .Id(dto.getId())
+                .questionTitle(dto.getQuestionTitle())
+                .question(dto.getQuestion())
+                .questionUrl(dto.getQuestionUrl())
+                .answer(dto.getAnswer())
+                .userId(dto.getUserId())
                 .build();
     }
 }

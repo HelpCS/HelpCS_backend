@@ -24,7 +24,7 @@ public class User {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String userSeq; // 유저에게 고유하게 부여되는 id.
+    private String Id; // 유저에게 고유하게 부여되는 id.
 
     @Column(nullable = false)
     private String username; // 유저의 이름

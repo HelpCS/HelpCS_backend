@@ -43,7 +43,7 @@ public class UserController {
 			User registeredUser = userService.create(user);
 			UserDTO responseUserDTO = UserDTO.builder()
 					.userId(registeredUser.getUserId())
-					.userSeq(registeredUser.getUserSeq())
+					.Id(registeredUser.getId())
 					.username(registeredUser.getUsername())
 					.build();
 			// 유저 정보는 항상 하나이므로 그냥 리스트로 만들어야하는 ResponseDTO를 사용하지 않고 그냥 UserDTO 리턴.
@@ -69,7 +69,7 @@ public class UserController {
 			final String token = tokenProvider.create(user);
 			final UserDTO responseUserDTO = UserDTO.builder()
 					.userId(user.getUsername())
-					.userSeq(user.getUserSeq())
+					.Id(user.getId())
 					.token(token)
 					.build();
 			return ResponseEntity.ok().body(responseUserDTO);
