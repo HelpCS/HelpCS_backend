@@ -24,8 +24,8 @@ before_deploy:
 
 deploy:
   - provider: s3
-    access_key_id: AKIAY4FSMIK4BPOVNNYA
-    secret_access_key: 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
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
     bucket: helpcs
     region: ap-northeast-2
     skip_cleanup: true
