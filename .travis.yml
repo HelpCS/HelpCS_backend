@@ -6,7 +6,7 @@ branches:
   only:
     - main
 
-# Travis CI 서버의 Home
+# Travis CI 서버의 Ho me
 cache:
   directories:
     - '$HOME/.m2/repository'
@@ -24,8 +24,8 @@ before_deploy:
 
 deploy:
   - provider: s3
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
+    access_key_id: AKIAY4FSMIK4DZWZ3TEI
+    secret_access_key: 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
     bucket: helpcs
     region: ap-northeast-2
     skip_cleanup: true
