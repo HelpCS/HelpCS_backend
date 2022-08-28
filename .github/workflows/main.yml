@@ -1,10 +1,10 @@
 env:  
   S3_BUCKET_NAME: helpcs 
-  PROJECT_NAME: HelpCS_backend 
+  PROJECT_NAME: HelpCS 
   CODE_DEPLOY_APP_NAME: HelpCS                    #(15)
   CODE_DEPLOY_GROUP_NAME: HelpCS-group
 
-name: deploy # (0) GitHub Action에서 보여질 이름을 지정합니다. 
+name: HelpCS_backend # (0) GitHub Action에서 보여질 이름을 지정합니다. 
 
 on:
   release:
