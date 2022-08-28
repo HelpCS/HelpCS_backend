@@ -18,9 +18,9 @@ before_install:
   - chmod +x gradlew
 
 before_deploy:
-  - zip -r HelpCS_backend *
+  - zip -r HelpCS *
   - mkdir -p deploy
-  - mv HelpCS_backend.zip deploy/HelpCS_backend.zip
+  - mv HelpCS.zip deploy/HelpCS.zip
 
 deploy:
   - provider: s3
