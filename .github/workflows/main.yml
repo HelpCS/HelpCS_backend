@@ -1,5 +1,5 @@
 env:  
-  S3_BUCKET_NAME: helpcs 
+  S3_BUCKET_NAME: helpcs2 
   PROJECT_NAME: HelpCS 
   CODE_DEPLOY_APP_NAME: HelpCS                    #(1 5)
   CODE_DEPLOY_GROUP_NAME: HelpCS-group
