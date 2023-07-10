@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class PostsSaveRequestDto {
-    private String id;
+    private Long id;
     private String questionTitle;
     private String question;
     private String questionUrl;

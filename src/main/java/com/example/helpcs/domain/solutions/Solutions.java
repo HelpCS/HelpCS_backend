@@ -1,9 +1,6 @@
 package com.example.helpcs.domain.solutions;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,12 +8,13 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
 @Entity
 @Table(name = "Solutions")
 public class Solutions {
     @Id
-    private String Id; // 유저에게 고유하게 부여되는 id.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id; // 유저에게 고유하게 부여되는 id.
 
     @Column(nullable = false)
     private String solution;

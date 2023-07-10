@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 @Repository
-public interface PostsRepository extends JpaRepository<Posts,String> {
+public interface PostsRepository extends JpaRepository<Posts,Long> {
     List<Posts> findByUserId(String userId);
     Posts findByQuestionTitleAndAnswer(String questionTitle, String answer);
 }

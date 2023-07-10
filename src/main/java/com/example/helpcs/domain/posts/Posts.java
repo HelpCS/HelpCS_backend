@@ -8,15 +8,14 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
 @Entity
 @Table(name = "Posts")
 public class Posts  {
 
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private String questionTitle;
     private String question;
     private String userId;

@@ -14,5 +14,5 @@ public class UserDTO {
 	private String userId;
 	private String username;
 	private String password;
-	private String Id;
+	private Long Id;
 }
