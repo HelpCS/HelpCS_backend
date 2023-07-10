@@ -68,7 +68,7 @@ public class UserController {
 			// 토큰 생성
 			final String token = tokenProvider.create(user);
 			final UserDTO responseUserDTO = UserDTO.builder()
-					.userId(user.getUsername())
+					.userId(user.getUserId())
 					.Id(user.getId())
 					.token(token)
 					.build();
