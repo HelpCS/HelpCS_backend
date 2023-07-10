@@ -4,8 +4,10 @@ import com.example.helpcs.domain.posts.Posts;
 import com.example.helpcs.survice.posts.PostsService;
 import com.example.helpcs.survice.solutions.SolutionsService;
 import com.example.helpcs.web.dto.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/posts")
+@Slf4j
 public class indexController {
 
     @Autowired
@@ -30,9 +33,9 @@ public class indexController {
             // (1) posts로 변환한다.
             Posts entity = PostsSaveRequestDto.toEntity(dto);
             // (2) id를 null로 초기화 한다. 생성 당시에는 id가 없어야 하기 때문이다.
-            entity.setId(null);
+            entity.builder().Id(null);
             // (3) userid 입력
-            entity.setUserId(userId);
+            entity.builder().userId(userId);
 
             // (4) 서비스를 이용해 Posts엔티티를 생성한다.
             List<Posts> entities = service.create(entity);
@@ -78,10 +81,9 @@ public class indexController {
                                         @RequestBody PostsSaveRequestDto dto) {
         // (1) dto를 entity로 변환한다.
         Posts entity = PostsSaveRequestDto.toEntity(dto);
-
+        log.info(userId);
         // (2) id를 userId 초기화 한다.
-        entity.setUserId(userId);
-
+        entity.builder().userId(userId);
         // (3) 서비스를 이용해 entity를 업데이트 한다.
         List<Posts> entities = service.update(entity);
 
@@ -104,7 +106,8 @@ public class indexController {
             Posts entity = PostsSaveRequestDto.toEntity(dto);
 
             // (2) 임시 유저 아이디를 설정 해 준다.
-            entity.setUserId(userId);
+            entity.builder().userId(userId);
+
 
             // (3) 서비스를 이용해 entity를 삭제 한다.
             List<Posts> entities = service.delete(entity);
