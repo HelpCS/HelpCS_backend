@@ -28,14 +28,14 @@ public class PostsSaveRequestDto {
         this.answer = entity.getAnswer();
     }
 
-    public static Posts toEntity(final PostsSaveRequestDto dto){
+    public static Posts toEntity(String userId,final PostsSaveRequestDto dto){
         return  Posts.builder()
                 .Id(dto.getId())
                 .questionTitle(dto.getQuestionTitle())
                 .question(dto.getQuestion())
                 .questionUrl(dto.getQuestionUrl())
                 .answer(dto.getAnswer())
-                .userId(dto.getUserId())
+                .userId(userId)
                 .build();
     }
 }

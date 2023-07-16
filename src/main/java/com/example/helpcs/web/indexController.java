@@ -31,11 +31,11 @@ public class indexController {
             @RequestBody PostsSaveRequestDto dto) {
         try {
             // (1) posts로 변환한다.
-            Posts entity = PostsSaveRequestDto.toEntity(dto);
+            Posts entity = PostsSaveRequestDto.toEntity(userId,dto);
             // (2) id를 null로 초기화 한다. 생성 당시에는 id가 없어야 하기 때문이다.
-            entity.builder().Id(null);
+//            entity.builder().Id(null);
             // (3) userid 입력
-            entity.builder().userId(userId);
+//            entity.builder().userId(userId);
 
             // (4) 서비스를 이용해 Posts엔티티를 생성한다.
             List<Posts> entities = service.create(entity);
@@ -80,10 +80,10 @@ public class indexController {
     public ResponseEntity<?> updatePosts(@AuthenticationPrincipal String userId,
                                         @RequestBody PostsSaveRequestDto dto) {
         // (1) dto를 entity로 변환한다.
-        Posts entity = PostsSaveRequestDto.toEntity(dto);
+        Posts entity = PostsSaveRequestDto.toEntity(userId,dto);
         log.info(userId);
         // (2) id를 userId 초기화 한다.
-        entity.builder().userId(userId);
+//        entity.builder().userId(userId);
         // (3) 서비스를 이용해 entity를 업데이트 한다.
         List<Posts> entities = service.update(entity);
 
@@ -103,10 +103,10 @@ public class indexController {
             @RequestBody PostsSaveRequestDto dto) {
         try {
             // (1) posts로 변환한다.
-            Posts entity = PostsSaveRequestDto.toEntity(dto);
+            Posts entity = PostsSaveRequestDto.toEntity(userId,dto);
 
             // (2) 임시 유저 아이디를 설정 해 준다.
-            entity.builder().userId(userId);
+//            entity.builder().userId(userId);
 
 
             // (3) 서비스를 이용해 entity를 삭제 한다.
