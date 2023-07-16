@@ -53,7 +53,11 @@ public class PostsService {
 
         original.ifPresent(post -> {
             // (3) 반환된 posts가 존재하면 값을 새 entity의 값으로 덮어 씌운다.
-            post.builder().questionTitle(entity.getQuestionTitle());
+            post.builder().questionTitle(entity.getQuestionTitle())
+                    .userId(entity.getUserId())
+                    .question(entity.getQuestion())
+                    .questionUrl(entity.getQuestionUrl())
+                    .answer(entity.getAnswer()).build();
 
             // (4) 데이터베이스에 새 값을 저장한다.
             repository.save(post);
